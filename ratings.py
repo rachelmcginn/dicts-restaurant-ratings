@@ -1,21 +1,10 @@
 """Restaurant rating lister."""
 
-#read the ratings from the file
-#open the file
-    #look at each line in the file
-    #split into a list 
-#sort the list alphabetically 
-
-#items() 
-#sorted()
-
-
-
 
 # put your code here
 def get_restaurant_ratings(file_name):
 
-    restaurant_ratings = {}
+    restaurant_ratings_dict = {}
     restaurant_ratings_list = []
 
     file_name = open(file_name)
@@ -23,21 +12,18 @@ def get_restaurant_ratings(file_name):
     for line in file_name:
         line = line.rstrip()
         restaurant_ratings_list.append(line.split(":"))
-    #print(restaurant_ratings_list)
-    for current_list in restaurant_ratings_list: #for each sublist 
-        #restaurant_ratings = restaurant_ratings_list[0]
-        #restaurant_ratings[1] = restaurant_ratings[1]
+  
+    for current_list in range(0,len(restaurant_ratings_list)):
+        restaurant, rating = restaurant_ratings_list[current_list][0], restaurant_ratings_list[current_list][1]
+        restaurant_ratings_dict[restaurant] = rating
 
-        restaurant = restaurant_ratings_list[0]
-        #ratings = restaurant_ratings[1]
+    restaurant_ratings_tuple = restaurant_ratings_dict.items()
+    restaurant_ratings_tuple = sorted(restaurant_ratings_tuple)
+    
+    for i in range(0,len(restaurant_ratings_tuple)):
+        message = print(f"{restaurant_ratings_tuple[i][0]} is rated {restaurant_ratings_tuple[i][1]}.")
 
-        #restaurant_ratings[restaurant] = ratings
+    return message
 
-    print(restaurant)
-#     #print(restaurant_ratings)
-#     print(restaurant_ratings_list)
-#         #restaurant_ratings[key] = 'value'
-
-# #print(restaurants)
 get_restaurant_ratings("scores.txt")
     
